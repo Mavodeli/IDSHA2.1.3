@@ -35,8 +35,8 @@ def binToDec(input):
     return int(input , 2)
 
 def calculateIEEE754(input):
-    ebits = 3
-    mbits = 3
+    ebits = 3                       # SIZE
+    mbits = 3                       # SIZE
     offset = (2 ** (ebits - 1)) - 1
         
     expobits = input[1:(ebits + 1)]
