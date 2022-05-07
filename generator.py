@@ -42,9 +42,16 @@ def calculateIEEE754(input):
     expobits = input[1:(ebits + 1)]
     mantisbits = input[(ebits + 1):(ebits + mbits + 1)]
     
+    if (binToDec(expobits) == 0 and binToDec(mantisbits) == 0):
+        return "0"
+    
     sign = (-1) ** int(input[0])
-    expo = binToDec(expobits) - offset
-    mantis = 1 + (binToDec(mantisbits) / (2 ** mbits))
+    if (binToDec(expobits) == 0):
+        expo = 2 ** (1 - offset)
+        mantis = (binToDec(mantisbits) / (2 ** mbits))
+    else:
+        expo = binToDec(expobits) - offset
+        mantis = 1 + (binToDec(mantisbits) / (2 ** mbits))
 
     result = sign * mantis * (2 ** expo)
     return str(result)
